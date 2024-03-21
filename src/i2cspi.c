@@ -175,7 +175,7 @@ static int i2cdump(int argc, char **argv, bool script_mode) {
     int fd = prepare_i2c_sensor(i2c_addr);
 
     if (script_mode) {
-        for (size_t i = from_reg_addr; i < to_reg_addr; ++i)
+        for (size_t i = from_reg_addr; i <= to_reg_addr; ++i)
             printf("ipctool i2cset %#x %#x %#x\n", i2c_addr, i,
                    i2c_read_register(fd, i2c_addr, i, SELECT_WIDE(i), 1));
     } else {
